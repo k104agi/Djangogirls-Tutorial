@@ -1,14 +1,31 @@
+{% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ㅎㅇㅎㅇㅎㅇ</title>
+    <title>DDjangogirls Tutorial</title>
+    <link rel="stylesheet" href=" {% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut autem dolore ducimus eius iure nesciunt perferendis.
-    Ad beatae id impedit ipsa laudantium minus ratione voluptas! Aperiam consectetur laudantium vero.</p>
+<div class="header">
+    <h1><a href="{% url 'post-list' %}">Django Girls Blog</a></h1>
+</div>
+
+<div class="container">
+    <div class="post">
+        <p class="post-date">published: {{ post.published_date }}</p>
+        <h1 class="post-title">
+            <a href="{% url 'post-detail' pk=post.pk %}">{{ post.title }}
+            </a>
+        </h1>
+        <div>
+            <p class="post-content full">{{ post.content|linebreaksbr }}</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
