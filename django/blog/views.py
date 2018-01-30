@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def post_list(request):
@@ -12,4 +13,4 @@ def post_list(request):
 # 8 함수의 실행 결과(리턴값)을 브라우저로 다시 전달
 # HTTP 프로토콜로 텍스트 데이터 응답을 변환
     #return HttpResponse('Post list') 는 아래와 같음
-    return HttpResponse('<html><body><h1>Post list</h1><p>Post 목록을 보여줄 예정입니다</p></body></html>')
+    return render(request, 'blog/post_list.html')
