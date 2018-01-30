@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,15 +7,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DDjangogirls Tutorial</title>
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/bootstrap/css/blog.css">
+    <link rel="stylesheet" href=" {% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/blog.css' %}">
 </head>
 <body>
 <div class="container">
-{% for post in posts %}
-<h1><a href="">{{post.title}}</a></h1>
-<div><p>{{post.content|linebreaksbr|truncatewords:30}}</p></div>
-{%endfor %}
+    {% for post in posts %}
+    <div class="post">
+        <p class="post-date">published: {{ post.published}}</p>
+        <h1 class="post-title"><a href="">{{post.title}}</a></h1>
+        <div><p class="post-content">{{post.content|linebreaksbr|truncatewords:30}}</p></div>
+        {%endfor %}
+    </div>
 </div>
 </body>
 </html>
