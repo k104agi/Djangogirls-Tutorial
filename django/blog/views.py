@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Post
 
 
 def post_list(request):
@@ -12,5 +13,25 @@ def post_list(request):
 # 7 있다면 일치하는 패턴과 연결된 함수(view)를 실행
 # 8 함수의 실행 결과(리턴값)을 브라우저로 다시 전달
 # HTTP 프로토콜로 텍스트 데이터 응답을 변환
+
+    posts = Post.objects.all()
+    context = {
+        'posts':posts,
+    }
+
     #return HttpResponse('Post list') 는 아래와 같음
-    return render(request, 'blog/post_list.html')
+    return render(
+        request=request,
+        template_name='blog/post_list.html',
+        context=context,
+    )
+    #return render(request, 'blog/post_list.html')
+
+def post_detail(request):
+    """
+    localhost:8000/default/ 로 온 요청을
+    'blog/post_detail.html'을 render한 결과를 리턴하기
+    :param request:
+    :return:
+    """
+    return render(request, 'blog/post_detail.html')
