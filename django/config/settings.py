@@ -13,9 +13,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Django 폴더를 뜻함
+# Django 폴더를 뜻함, 'django'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 'django/template' 폴더
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+# 'django/static' 폴더
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+#쟝고에서 정적파일을 검색할 경로 목록
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -116,4 +123,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+
+# 만약 요청의 URL이 /static/으로 시작할 경우
+# STATICFILES_DIRS에 정의된 경로 목록에서
+# /static/<path>/ <- <path> 부분에 정의된 경로에 해당하는 파일을 찾아 돌려준다
+# 즉 주소변환 같은 동적 요청(?)과 다르게,
+# 정적요소(이미지, 색깔, CSS 등)는 내가 가진걸 추가과정 없이 그대로 꺼내주면 되기 때문이다.
 STATIC_URL = '/static/'
