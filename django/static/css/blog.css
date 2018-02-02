@@ -7,12 +7,14 @@ h1 {
 h2 {
     font-size: 24px;
 }
+form.inline {
+    display: inline-block;
+}
 .header {
     background-color: #393939;
     padding-top: 15px;
     padding-bottom: 15px;
     margin-bottom: 10px;
-    margin-left: 20px;
 }
 .header a {
     color: white;
@@ -21,7 +23,7 @@ h2 {
 
 .post {
     padding-bottom: 10px;
-    border-bottom: 1px solid #bcbcbc;
+    border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
 }
 .post:last-child {
@@ -35,10 +37,8 @@ h2 {
 .post > .post-content {
     max-height: 190px;
     overflow: hidden;
-
 }
-
-.post > .post-content.full{
-max-height:initial;
-overflow:initial;
+.post > .post-content.full {
+    max-height: initial;
+    overflow: initial;
 }
